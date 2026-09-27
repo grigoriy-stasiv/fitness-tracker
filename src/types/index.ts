@@ -1,4 +1,3 @@
-// Типи тренувань
 export type WorkoutType = 'run' | 'walk' | 'cycling';
 
 export interface LocationCoordinate {
