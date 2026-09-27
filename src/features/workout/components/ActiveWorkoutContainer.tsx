@@ -19,12 +19,15 @@ export const ActiveWorkoutContainer: React.FC<ActiveWorkoutContainerProps> = ({ 
   useEffect(() => {
     const interval = setInterval(() => {
       setSeconds((prev) => prev + 1);
-      setCalories((prev) => Math.round((seconds * 0.12) * 10) / 10);
+      setCalories(Math.round((seconds * 0.12) * 10) / 10);
     }, 1000);
 
     return () => clearInterval(interval);
   }, [seconds]);
-
+useEffect(() => {
+  const totalKm = calculateTotalDistance(route);
+  setDistance(totalKm);
+}, [route]);
   const formatTime = (totalSeconds: number) => {
     const hrs = Math.floor(totalSeconds / 3600);
     const mins = Math.floor((totalSeconds % 3600) / 60);
